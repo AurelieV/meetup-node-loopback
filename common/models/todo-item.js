@@ -5,6 +5,7 @@ module.exports = function(TodoItem) {
       item.updateAttributes({'doneDate': new Date(), 'isDone': true}, next);
     });
   };
+
   TodoItem.remoteMethod('check',
     {
       http: {path: '/check', verb: 'post'},
@@ -18,5 +19,7 @@ module.exports = function(TodoItem) {
     req.body.userId = req.accessToken.userId;
     next();
   });
+
+  TodoItem.validatesUniquenessOf('task', {message: 'your task name is not unique'});
 
 };
