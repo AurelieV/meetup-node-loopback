@@ -12,4 +12,11 @@ module.exports = function(TodoItem) {
       returns: {arg: 'item', type: 'object'}
     }
   );
+
+  TodoItem.beforeRemote('create', function(context, user, next) {
+    var req = context.req;
+    req.body.userId = req.accessToken.userId;
+    next();
+  });
+
 };
