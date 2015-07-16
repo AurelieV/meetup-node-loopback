@@ -9,6 +9,11 @@
 
 <body>
   <h1> Mes items </h1>
+  <h2> Ajout </h2>
+  <form>
+    <input type="text" ng-model="name"/>
+    <button ng-click="create(name)"> Ajouter </button>
+  </form>
   <h2> To be done </h2>
   <ul>
     <li ng-repeat="item in $root.items | filter:{isDone: false} track by item.id">

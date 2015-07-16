@@ -6,5 +6,9 @@ angular.module('app', ['lbServices'])
       TodoItem.check({id: item.id}, {}, function(itemUpdated){
         item.isDone = true;
       });
+    };
+
+    $rootScope.create = function(name) {
+      TodoItem.create({task: name}, function(item){$rootScope.items.push(item);});
     }
 });
