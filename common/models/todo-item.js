@@ -16,7 +16,9 @@ module.exports = function(TodoItem) {
 
   TodoItem.beforeRemote('create', function(context, user, next) {
     var req = context.req;
-    req.body.userId = req.accessToken.userId;
+    if (req.accessToken) {
+      req.body.userId = req.accessToken.userId;
+    }
     next();
   });
 

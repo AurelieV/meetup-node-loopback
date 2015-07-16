@@ -9,8 +9,16 @@
 
 <body>
   <h1> Mes items </h1>
+  <h2> To be done </h2>
   <ul>
-    <li ng-repeat="item in $root.items"> {{ item.task }}</li>
+    <li ng-repeat="item in $root.items | filter:{isDone: false} track by item.id">
+      {{ item.task }} {{item.isDone}}
+      <button ng-click="check(item)">Done !</button>
+    </li>
+  </ul>
+  <h2> Done </h2>
+  <ul>
+    <li ng-repeat="item in $root.items | filter:{isDone: true} | orderBy:'-doneDate' track by item.id"> {{ item.task }}</li>
   </ul>
 </body>
 
