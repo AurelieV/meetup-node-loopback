@@ -31,5 +31,9 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "TodoItem": {
+    "dataSource": "db",
+    "public": true
   }
 }
